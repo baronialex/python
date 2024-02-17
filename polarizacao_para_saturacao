@@ -1,0 +1,31 @@
+Created on Sat Feb 17 07:19:34 2024
+
+@author: Alex Baroni
+"""
+
+print("Cálculo dos resistores de polarização para saturação")
+print("    em um circuito com 1 transistor de silício:")
+
+print("\n")   #Salto de linha
+
+# Solicita os seguintes valores:
+corrente_saturacao = float(input("Corrente de saturação (Amperes): ").replace(",", ".") )
+print("\n")   #Salto de linha
+
+hFE_transistor = float(input("hFE do transistor: ").replace(",", ".") )
+print("\n")   #Salto de linha
+
+tensao_circuito = float(input("Tensão do circuito (Volts): ").replace(",", ".") )
+print("\n")   #Salto de linha
+
+
+# Cálculo dos valores dos resistores e corrente de base
+resistor_coletor = tensao_circuito / corrente_saturacao
+corrente_base = corrente_saturacao / hFE_transistor
+resistor_base = (tensao_circuito - 0.7) / corrente_base
+
+# Resultados
+print(f"Resistor de coletor: {resistor_coletor} Ohms")
+
+print(f"Irá circula uma corrente de base no valor de: {round(corrente_base,5)} Amperes")
+print(f"Resistor de base: {resistor_base} Ohms")

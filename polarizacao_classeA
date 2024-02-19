@@ -1,0 +1,42 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Feb 17 07:19:34 2024
+
+@author: Alex Baroni
+"""
+
+print("      Cálculo dos resistores de polarização em")
+print("um circuito amplificador com 1 transistor de silício:")
+
+print("\n")   #Salto de linha
+
+def calcular_valores(Vcc, hFE, corrente_coletor_desejada, Tensao_Vce):
+    Ve = (1/10) * Vcc
+    Re = Ve / corrente_coletor_desejada
+    Rc = (Vcc - Tensao_Vce - Ve) / corrente_coletor_desejada
+    Ib = corrente_coletor_desejada / hFE
+    Rb = (Vcc - 0.7 - Ve) / Ib
+    return Ve, Re, Rc, Ib, Rb
+
+# Entrada de dados
+Vcc = float(input("Tensão do circuito (Vcc) em Volt: ").replace(",", "."))
+print("\n")   #Salto de linha
+
+hFE = float(input("hFE do transistor: "))
+print("\n")   #Salto de linha
+
+corrente_coletor_desejada = float(input("Corrente de coletor desejada em Ampere: ").replace(",", "."))
+print("\n")   #Salto de linha
+
+Tensao_Vce = float(input("Tensão Vce em Volt: ").replace(",", "."))
+print("\n")   #Salto de linha
+
+# Cálculo dos valores
+Ve, Re, Rc, Ib, Rb = calcular_valores(Vcc, hFE, corrente_coletor_desejada, Tensao_Vce)
+
+# Saída dos resultados
+print("\nResultados:")
+print("Re (Resistor de emissor) =", round(Re,5), "Ohms")
+print("Rc (Resistor de coletor) =", round(Rc,5), "Ohms")
+print("Ib (Corrente de base) =", round(Ib,5), "Ampere")
+print("Rb (Resistor de base) =", round(Rb,5), "Ohms")

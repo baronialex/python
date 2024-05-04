@@ -2,7 +2,7 @@
 """
 Created on Sat Feb 17 07:19:34 2024
 
-@author: Alex Baroni
+@author: Alex Baroni 
 """
 
 print("      Cálculo dos resistores de polarização em")
